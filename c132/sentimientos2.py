@@ -1,9 +1,15 @@
 #importamos pandas
 import pandas as pd
 import tensorflow as tf
+import numpy as np
 
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
+
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Embedding, LSTM, Dense
+from tensorflow.keras.layers import Conv1D, Dropout, MaxPooling1D
+
 
 # Leemos el excel y lo guardamos en una variable
 train_data_raw = pd.read_excel("Text-Sentiment-Dataset/text-emotion-training-dataset.xlsx")
@@ -73,6 +79,34 @@ trunc_type = 'post'
 training_padded = pad_sequences(training_sequences, maxlen = max_length, padding=padding_type, truncating = trunc_type)
 
 print(training_padded[0])
-print(training_padded[1])
-print(training_padded[2])
-print(training_padded[3])
+
+training_padded = np.array(training_padded)
+training_labels = np.array(training_labels)
+
+print(training_padded)
+print(training_labels)
+
+model = tf.keras.Sequential([
+    Embedding(vocab_size, embedding_dim, input_length=max_length),
+    Dropout(0.2),
+
+    Conv1D( filters=256, kernel_size = 3, activation = "relu"),
+    MaxPooling1D(pool_size = 3),
+
+    Conv1D( filters=128, kernel_size = 3, activation = "relu"),
+    MaxPooling1D(pool_size = 3),
+
+    LSTM(128),
+
+    Dense(128, activation = "relu"),
+    Dropout(0.2),
+    Dense(64, activation="relu"),
+    Dense(6, activation="softmax")
+
+])
+
+model.compile(loss="sparse_categorical_crossentropy", optimizer="adam", metrics=['accuracy'])
+num_epochs = 100
+history = model.fit(training_padded, training_labels, epochs=num_epochs, verbose=2)
+
+model.save("Text_Emotion.h5")
