@@ -7,6 +7,8 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import load_model
 
 train_data = pd.read_csv("./static/assets/data_files/tweet_emotions.csv")
+train_data.sentiment = train_data.sentiment.astype(str)
+train_data.content = train_data.content.astype(str)
 training_sentences = []
 
 for i in range(len(train_data)):
