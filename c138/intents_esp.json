@@ -1,0 +1,25 @@
+{"intents": [
+    {"tag": "saludos",
+     "patterns": ["Que onda!!", "Cómo estás?", "Hay alguien ahí?",
+                    "Que hay","Hola", "Buenas tardes", "Buenos días", "Buenas noches"],
+     "responses": ["Hola!!, Gracias por preguntar", "Qué bueno volverte a ver!.", 
+                    "Qué hay?, Cómo puedo ayudarte?"]
+    },
+    {"tag": "despedidas",
+     "patterns": ["Adios", "Nos vemos luego", "Hasta pronto", "Gracias por todo, adios", 
+                  "Hasta la próxima"],
+     "responses": ["Nos vemos!", "Ten un buen día", "Adios! Regresa pronto.",
+                   "Buen día"]             
+    },
+    {"tag": "Agradecimientos",
+      "patterns": ["Gracias!", "Muchas gracias", "Esto fue de ayuda", "asombroso, Gracias!", 
+                   "Gracias por tu ayuda!"],
+      "responses": ["Feliz de ayudar!", "Cuando quieras!", "Un placer."]
+     },
+     {"tag": "sinrespuesta",
+      "patterns": [""],
+      "responses": ["Lo siento, no puedo entenderte.", "Por favor, dame más información.", 
+                    "No estoy seguro de haber entendido."]
+     }
+  ]
+}

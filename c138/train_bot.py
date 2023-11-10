@@ -5,6 +5,8 @@ import nltk
 from nltk import word_tokenize,sent_tokenize
 from nltk.stem import PorterStemmer
 stemmer = PorterStemmer()
+#from nltk.stem import SnowballStemmer
+#stemmer = SnowballStemmer('spanish')
 
 import json
 import pickle
@@ -58,4 +60,44 @@ stem_words, classes = create_bot_corpus(stem_words,classes)
 print(stem_words)
 print(classes)
 
-     
+training_data = []
+number_of_tags = len(classes)
+labels = [0]*number_of_tags
+
+for word_tags in word_tags_list :
+    bag_of_words = []
+    pattern_words = word_tags[0]
+
+    for word in pattern_words :
+         index = pattern_words.index(word)
+         word=stemmer.stem(word.lower())
+         pattern_words[index] = word
+    
+    for word in stem_words :
+        if word in pattern_words :
+              bag_of_words.append(1)
+        else :
+             bag_of_words.append(0)
+
+    print(bag_of_words)
+
+    labels_encoding = list(labels)
+    tag = word_tags[1]
+    tag_index = classes.index(tag)
+    labels_encoding[tag_index] = 1
+
+    training_data.append([bag_of_words, labels_encoding])
+
+print(training_data[0])
+
+def preprocess_train_data(training_data) :
+     training_data = np.array(training_data, dtype=object)
+     train_x = list(training_data[:,0])
+     train_y = list(training_data[:,1])
+
+     print(train_x[0])
+     print(train_y[0])
+
+     return train_x, train_y
+
+train_x, train_y = preprocess_train_data(training_data)
