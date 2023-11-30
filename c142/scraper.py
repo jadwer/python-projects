@@ -19,7 +19,7 @@ planet_data = []
 new_planet_data=[]
 
 def scrape():
-    for i in range(1,total_pages):
+    for i in range(1,2):
     # for i in range(1,2):
 
         while True:
@@ -88,7 +88,7 @@ for index, data in enumerate(planet_data):
     new_planet_data_element = new_planet_data_element[:7]
     final_planet_data.append(data + new_planet_data_element)
 
-    with open("list_of_planets.csv", "w") as f:
+    with open("list_of_planets.csv", "w", newline='') as f:
         csvwriter = csv.writer(f)
         csvwriter.writerow(headers)
         csvwriter.writerows(final_planet_data)
