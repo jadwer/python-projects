@@ -19,8 +19,8 @@ planet_data = []
 new_planet_data=[]
 
 def scrape():
+    #for i in range(total_pages):
     for i in range(1,2):
-    # for i in range(1,2):
 
         while True:
             time.sleep(0.25)
@@ -49,7 +49,6 @@ def scrape():
             hyperlink = "https://exoplanets.nasa.gov"+hyperlink_li_tag.find_all("a", href=True)[0]["href"]
             temp_list.append(hyperlink)
             planet_data.append(temp_list)
-            #  planet_data.extend(scrape_more_data(hyperlink))
         browser.find_element(By.XPATH, '//*[@id="primary_column"]/footer/div/div/div/nav/span[2]/a').click()
         print(f"Extracción de datos de la página {i} completada")
 
@@ -68,7 +67,6 @@ def scrape_more_data(hyperlink):
                 except:
                     temp_list.append("")
         description = soup.find_all("div", attrs={"class":"wysiwyg_content"})[0].contents[0]
-        new_planet_data.append(description)
         new_planet_data.append(temp_list)
     except:
         time.sleep(1)
@@ -79,7 +77,7 @@ print(planet_data)
 
 for index, data in enumerate(planet_data):
     scrape_more_data(data[5])
-    print(f"Datos extraídos del hipervínculo {index + 1} completado 2")
+    print(f"Datos extraídos del hipervínculo {index + 1} : {data[5]} completado")
 
 final_planet_data = []
 for index, data in enumerate(planet_data):
