@@ -14,12 +14,13 @@ soup = BeautifulSoup(browser.page_source,"html.parser")
 total_pages = int(soup.find_all("span", attrs={"class", "total_pages"})[0].contents[0])
 print(total_pages)
 time.sleep(2)
-headers = ["name", "ligh_years_from_earth", "planet_mass", "stellar_magnitude", "discovery_date", "hyperlink", "planet_type", "planet_radius", "orbital_radius", "orbital_period", "eccentricity"]
+headers = ["id", "name", "ligh_years_from_earth", "planet_mass", "stellar_magnitude", "discovery_date", "hyperlink", "planet_type", "planet_radius", "orbital_radius", "orbital_period", "eccentricity"]
 planet_data = []
 new_planet_data=[]
 
 def scrape():
-    #for i in range(total_pages):
+    id_counter = 0
+    #for i in range(1,total_pages):
     for i in range(1,2):
 
         while True:
@@ -33,7 +34,6 @@ def scrape():
             else:
                 break
                 
-
         for ul_tag in soup.find_all("ul", attrs={"class", "exoplanet"}):
             li_tags = ul_tag.find_all("li")
             temp_list = []
@@ -48,7 +48,8 @@ def scrape():
             hyperlink_li_tag = li_tags[0]
             hyperlink = "https://exoplanets.nasa.gov"+hyperlink_li_tag.find_all("a", href=True)[0]["href"]
             temp_list.append(hyperlink)
-            planet_data.append(temp_list)
+            planet_data.append([id_counter] + temp_list)
+            id_counter = id_counter + 1
         browser.find_element(By.XPATH, '//*[@id="primary_column"]/footer/div/div/div/nav/span[2]/a').click()
         print(f"Extracción de datos de la página {i} completada")
 
@@ -72,21 +73,25 @@ def scrape_more_data(hyperlink):
         time.sleep(1)
         scrape_more_data(hyperlink)
 
+
+def merge_all_data() :
+    for index, data in enumerate(planet_data):
+        scrape_more_data(data[6])
+        #print(f"Datos extraídos del hipervínculo {index + 1} : {data[6]} completado")
+
+    final_planet_data = []
+    for index, data in enumerate(planet_data):
+        new_planet_data_element = new_planet_data[index]
+        new_planet_data_element = [elem.replace("\n", "") for elem in new_planet_data_element]
+        new_planet_data_element = new_planet_data_element[:7]
+        final_planet_data.append(data + new_planet_data_element)
+
+        with open("list_of_planets.csv", "w", newline='') as f:
+            csvwriter = csv.writer(f)
+            csvwriter.writerow(headers)
+            csvwriter.writerows(final_planet_data)
+
 scrape()
-print(planet_data)
-
-for index, data in enumerate(planet_data):
-    scrape_more_data(data[5])
-    print(f"Datos extraídos del hipervínculo {index + 1} : {data[5]} completado")
-
-final_planet_data = []
-for index, data in enumerate(planet_data):
-    new_planet_data_element = new_planet_data[index]
-    new_planet_data_element = [elem.replace("\n", "") for elem in new_planet_data_element]
-    new_planet_data_element = new_planet_data_element[:7]
-    final_planet_data.append(data + new_planet_data_element)
-
-    with open("list_of_planets.csv", "w", newline='') as f:
-        csvwriter = csv.writer(f)
-        csvwriter.writerow(headers)
-        csvwriter.writerows(final_planet_data)
+#print(planet_data)
+merge_all_data()
+print("Proceso terminado")
