@@ -113,7 +113,7 @@ export default class DetailsScreen extends Component {
                   </Text>
                   {details.specifications.map((item, index) => (
                     <Text key={index.toString()} style={styles.planetData}>
-                      {item}
+                      {item}&nbsp;
                     </Text>
                   ))}
                 </View>
