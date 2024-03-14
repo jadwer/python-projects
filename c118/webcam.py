@@ -1,6 +1,6 @@
 import cv2
 
-vid = cv2.VideoCapture(1)
+vid = cv2.VideoCapture(0)
 
 if(vid.isOpened() == False):
     print("Error: no se puede leer la cámara")
