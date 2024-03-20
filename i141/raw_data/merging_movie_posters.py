@@ -16,3 +16,8 @@ final_df = pd.merge(movie_df, movie_links_df, on = "original_title")
 final_df.info()
 
 final_df.to_csv('final.csv')
+
+# Para Colab, necesitamos descargar el carchivo creado
+# from google.colab import files
+# files.download('final.csv')
+
