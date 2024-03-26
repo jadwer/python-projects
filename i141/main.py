@@ -14,6 +14,10 @@ liked_movies = []
 not_liked_movies = []
 did_not_watch = []
 
+a_val = 123412321
+b_val = 7653532
+suma =  a_val + b_val
+
 def assign_val() :
     m_data = {
         'original_title': all_movies.iloc[0,0],
@@ -23,6 +27,13 @@ def assign_val() :
         'rating': all_movies.iloc[0,4]/2
     }
     return m_data
+
+@app.route("/")
+def home() :
+    return jsonify({
+        "data": "runing...",
+        "status": "success"
+    })
 
 @app.route("/movies")
 def get_movie() :
