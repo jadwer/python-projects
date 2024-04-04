@@ -17,7 +17,7 @@ export default class HomeScreen extends Component {
     super();
     this.state = {
       movieDetails: {},
-      ngrok_url: "https://dc38-187-190-25-197.ngrok-free.app/",
+      ngrok_url: "",
     };
   }
 
