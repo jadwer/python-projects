@@ -17,12 +17,12 @@ export default class HomeScreen extends Component {
     super();
     this.state = {
       movieDetails: {},
-      ngrok_url: "https://dc38-187-190-25-197.ngrok-free.app/",
+      ngrok_url: "",
     };
   }
 
   componentDidMount() {
-    this.getMovie();
+    //this.getMovie();
   }
 
   /*define getmovie(), likedMovie(), dislikedMovie() ,notWatched() functions here*/
@@ -35,14 +35,14 @@ export default class HomeScreen extends Component {
         this.setState({ movieDetails: response.data.data });
       })
       .catch((error) => {
-        console.log("Esperando NGrok para acceder a la API: ",error.message);
+        console.log(error.message);
       });
   };
 
   likedMovie = () => {
     const url = this.state.ngrok_url + "/like";
     axios
-      .post(url)
+      .get(url)
       .then((response) => {
         this.getMovie();
       })
@@ -54,7 +54,7 @@ export default class HomeScreen extends Component {
   dislikedMovie = () => {
     const url = this.state.ngrok_url + "/dislike";
     axios
-      .post(url)
+      .get(url)
       .then((response) => {
         this.getMovie();
       })
@@ -66,7 +66,7 @@ export default class HomeScreen extends Component {
   notWatched = () => {
     const url = this.state.ngrok_url + "/did_not_watch";
     axios
-      .post(url)
+      .get(url)
       .then((response) => {
         this.getMovie();
       })
@@ -77,23 +77,22 @@ export default class HomeScreen extends Component {
 
   render() {
     const { movieDetails } = this.state;
-    if (movieDetails.poster_link) {
+/*    if (movieDetails.poster_link) {
       const { poster_link, original_title, release_date, duration, rating } =
         movieDetails;
+ */
+    if(1 == 1) {
+      const { poster_link, original_title, release_date, duration, rating } =
+      movieDetails;
 
       return (
         <View style={styles.container}>
           <ImageBackground
             source={require("../assets/bg.png")}
-            style={{
-              flex: 1,
-              width: "100%",
-              height: "100%",
-              resizeMode: "cover",
-              justifyContent: "center",
-            }}>
+            style={{ flex: 1, width: '100%', height: '100%', resizeMode: 'cover', justifyContent: 'center'}}
+          >
             <View style={styles.headerContainer}>
-              <Text style={styles.headerTitle}>Watch that movie!</Text>
+              <Text style={styles.headerTitle}>Movie Recommendation</Text>
               <Icon
                 name="chevron-right"
                 type="feather"
@@ -102,7 +101,8 @@ export default class HomeScreen extends Component {
                 containerStyle={{ position: "absolute", right: RFValue(5) }}
                 onPress={() => {
                   this.props.navigation.navigate("Movies");
-                }}></Icon>
+                }}
+              ></Icon>
             </View>
 
             <View style={styles.subContainer}>
@@ -119,7 +119,8 @@ export default class HomeScreen extends Component {
                 <View style={styles.detailsContainer}>
                   <Text style={styles.title}>{original_title}</Text>
                   <Text style={styles.subtitle}>
-                    {release_date.split("-")[0]} | {duration} mins
+                    {/*{release_date.split("-")[0]} | {duration} mins */}
+                    2018 | 00:00 mins
                   </Text>
                 </View>
               </View>
