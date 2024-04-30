@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+</head>
+
+<body>
+    <a-scene>
+        <a-assets>
+            <img id="space" src="./assets/sky.jpg">
+        </a-assets>
+        <a-entity
+            sound="src: https://cdn.glitch.com/850dd813-e5e9-4dd0-9751-38981ae74172%2Ffh_space_discovery_-_earth_proud_music_preview(1).mp3?v=1604306441093; autoplay: true; volume: 0.5">
+
+        </a-entity>
+        <!-- camara -->
+        <a-entity position="0 0 15">
+            <a-camera></a-camera>
+        </a-entity>
+
+        <!-- espacio -->
+        <a-sky src="#space"></a-sky>
+
+
+        <!-- Sol cubico -->
+        <!-- a-entity
+            position="0 0 0" rotation="0 0 0"
+            animation="property: rotation; to: 360 0 0; easing:linear; loop:true; dur:20000;"
+        >
+            <a-box position="0 0 0" size="2" color="gold" />
+        </a-entity -->
+
+        <!-- Sol -->
+        <a-entity>
+            <a-sphere position="0 0 0" radius="2" src="https://cdn.glitch.me/850dd813-e5e9-4dd0-9751-38981ae74172%2Fsol.jpg" />
+        </a-entity>
+
+        <!-- Mercurio -->
+        <a-entity position="0 0 0" rotation="0 0 0"
+            animation="property: rotation; to: 0 360 0; easing:linear; loop:true; dur:20000;">
+            <a-sphere position="1 0 -5" radius="0.1" src="https://cdn.glitch.me/850dd813-e5e9-4dd0-9751-38981ae74172%2Fmercurio.jpg"/>
+        </a-entity>
+        <a-torus color="grey" radius="5.1" radius-tubular="0.01" rotation="90 0 0" segments-tubular="32"></a-torus>
+
+        <!-- Venus -->
+        <a-entity position="0 0 0" rotation="0 0 0"
+            animation="property: rotation; to: 0 360 0; easing:linear; loop:true; dur:25000;">
+            <a-sphere position="6 0 -5" radius="0.2" src="https://cdn.glitch.me/850dd813-e5e9-4dd0-9751-38981ae74172%2Fvenus.jpg" />
+        </a-entity>
+        <a-torus color="grey" radius="7.8" radius-tubular="0.01" rotation="90 0 0" segments-tubular="32"></a-torus>
+
+        <!-- Tierra -->
+        <a-entity position="0 0 0" rotation="0 0 0"
+            animation="property: rotation; to: 0 360 0; easing:linear; loop:true; dur:30000;">
+            <a-sphere position="10.5 0 0" radius="0.4" src="https://cdn.glitch.me/850dd813-e5e9-4dd0-9751-38981ae74172%2Fearth.jpg" />
+            <!-- Luna -->
+            <a-entity position="0 0 0" rotation="0 0 0"
+                animation="property: rotation; to: 0 360 0; easing:linear; loop: true; dur:10000" 
+            >
+                <a-sphere position="1 0 0" radius="0.1" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e664f5d7-3cd8-41a8-a1bb-1767cf4c1a59/d3y3lvg-ea98103a-db5e-454b-9b3e-c71f238ce97a.jpg/v1/fill/w_1264,h_632,q_70,strp/moon___map_by_horizoied_d3y3lvg-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAwMCIsInBhdGgiOiJcL2ZcL2U2NjRmNWQ3LTNjZDgtNDFhOC1hMWJiLTE3NjdjZjRjMWE1OVwvZDN5M2x2Zy1lYTk4MTAzYS1kYjVlLTQ1NGItOWIzZS1jNzFmMjM4Y2U5N2EuanBnIiwid2lkdGgiOiI8PTIwMDAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.jUy0gBR8IsZTWlbFzYb37H1kH62-MDL2FvTrapw5lMM">
+
+                </a-sphere>
+            </a-entity>
+        </a-entity>
+        <a-torus color="grey" radius="10.6" radius-tubular="0.01" rotation="90 0 0" segments-tubular="32"></a-torus>
+
+        <!-- Marte -->
+        <a-entity position="0 0 0" rotation="0 0 0"
+            animation="property: rotation; to: 0 360 0; easing:linear; loop:true; dur:35000;">
+            <a-sphere position="14.5 0 0" radius="0.4" src="https://cdn.glitch.me/850dd813-e5e9-4dd0-9751-38981ae74172%2Fmarte.jpg" />
+        </a-entity>
+        <a-torus color="grey" radius="14.5" radius-tubular="0.01" rotation="90 0 0" segments-tubular="64"></a-torus>
+
+        <!-- Júpiter -->
+        <a-entity position="0 0 0" rotation="0 0 0"
+            animation="property: rotation; to: 0 360 0; easing:linear; loop:true; dur:40000;">
+            <a-sphere position="21 0 -5" radius="1.2" src="https://cdn.glitch.me/850dd813-e5e9-4dd0-9751-38981ae74172%2Fjupiter.jpg" />
+        </a-entity>
+        <a-torus color="grey" radius="21.5" radius-tubular="0.01" rotation="90 0 0" segments-tubular="64"></a-torus>
+
+        <!-- Saturno  -->
+        <a-entity position="0 0 0" rotation="0 0 0"
+            animation="property: rotation; to: 0 360 0; easing:linear; loop:true; dur:45000;">
+            <a-sphere position="26 0 -5" radius="0.9" src="https://cdn.glitch.me/850dd813-e5e9-4dd0-9751-38981ae74172%2Fsaturn.png" />
+            <!--a-ring material="side: double" radius-inner="1.5" radius-outer="2" rotation="45 0 0" color="cyan"></a-ring-->
+            <a-torus color="red" radius="3" rotation="90 0 0" radius-tubular="0.015"></a-torus>
+            <a-torus color="pink" radius="2.9" rotation="90 0 0" radius-tubular="0.02"></a-torus>
+            <a-torus color="orange" radius="2.8" rotation="90 0 0" radius-tubular="0.025"></a-torus>
+        </a-entity>
+        <a-torus color="grey" radius="26.5" radius-tubular="0.01" rotation="90 0 0" segments-tubular="64"></a-torus>
+
+        <!-- Urano -->
+        <a-entity position="0 0 0" rotation="0 0 0"
+            animation="property: rotation; to: 0 360 0; easing:linear; loop:true; dur:50000;">
+            <a-sphere position="31 0 -5" radius="0.6" src="https://cdn.glitch.me/850dd813-e5e9-4dd0-9751-38981ae74172%2Furanus.jpg" />
+        </a-entity>
+        <a-torus color="grey" radius="31.5" radius-tubular="0.01" rotation="90 0 0" segments-tubular="100"></a-torus>
+
+        <!-- Neptuno -->
+        <a-entity position="0 0 0" rotation="0 0 0"
+            animation="property: rotation; to: 0 360 0; easing:linear; loop:true; dur:55000;">
+            <a-sphere position="36 0 -5" radius="0.2" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e0763947-6f42-4d09-944f-c2d6f41c415b/dcaifld-8408b286-dfb4-4b94-9d36-029c36cc636f.jpg/v1/fill/w_1024,h_512,q_75,strp/neptune_texture_map_by_neptuneproproduction_dcaifld-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTEyIiwicGF0aCI6IlwvZlwvZTA3NjM5NDctNmY0Mi00ZDA5LTk0NGYtYzJkNmY0MWM0MTViXC9kY2FpZmxkLTg0MDhiMjg2LWRmYjQtNGI5NC05ZDM2LTAyOWMzNmNjNjM2Zi5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.iFyKrmHiZwqgogPZ9sDu0Uzw41Kx3Cs-EFlUk4BdFfQ" />
+        </a-entity>
+        <a-torus color="grey" radius="36.5" radius-tubular="0.01" rotation="90 0 0" segments-tubular="100"></a-torus>
+
+
+    </a-scene>
+
+</body>
+
+</html>
