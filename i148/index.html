@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3d Modeling</title>
+
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Administración de recursos-->
+      <a-assets timeout="3000">
+        <a-asset-item
+          id="tiger"
+          src="./models/tiger/Mesh_BengalTiger.gltf"></a-asset-item>
+        <a-asset-item
+          id="giraffe"
+          src="./models/toy_giraffe/scene.gltf"></a-asset-item>
+        <a-asset-item
+          id="fence"
+          src="./models/wooden_fence_game_ready_asset/scene.gltf"></a-asset-item>
+        <a-asset-item
+          id="tree"
+          src="./models/tree_for_games/scene.gltf"></a-asset-item>
+        <a-asset-item
+          id="photographer"
+          src="./models/photographer/scene.gltf"></a-asset-item>
+        <img id="bg" src="assets/sky.jpg" />
+      </a-assets>
+      <!----------------------------------->
+
+      <!-- Configuración de la escena -->
+      <!-- Cielo -->
+      <a-sky src="#bg"></a-sky>
+
+      <!-- Luces -->
+      <a-entity light="type:ambient; intensity:0.5;"></a-entity>
+      <a-entity
+        light="type:directional; castShadow:true; intensity:5; distance:50; decay:2; color:green;"
+        position="-100 18 20"></a-entity>
+
+      <!-- Suelo -->
+      <a-circle
+        positions="-0.4 -0.76 -25"
+        rotation="-90 0 0"
+        radius="100"
+        shadow="receive: true;"
+        visible="true"
+        color="#3A6">
+      </a-circle>
+      <!-- Termina la configuración de nuestra escena -->
+
+      <!-- Creacion del escenario -->
+
+      <a-entity>
+        <!-- tigre -->
+        <a-entity
+          position="-7 2 0"
+          rotation="0 55 0"
+          scale="0.05 0.05 0.05"
+          gltf-model="#tiger"
+          shadow="cast: true; receive: true;"></a-entity>
+
+        <!-- Girafa -->
+        <a-entity
+          position="-9 2 0"
+          rotation="0 55 0"
+          scale="5 5 5"
+          gltf-model="#giraffe"
+          shadow="cast: true; receive: true"></a-entity>
+        <!-- Fotógrafo -->
+        <a-entity
+          position="-5 2 0"
+          rotation="0 55 0"
+          scale="5 5 5"
+          gltf-model="#photographer"
+          shadow="cast: true; receive: true;"></a-entity>
+
+        <!-- Flora -->
+        <a-entity
+          position="-11 2 0"
+          rotation="0 55 0"
+          scale="0.05 0.05 0.05"
+          gltf-model="#tree"
+          shadow="cast: true; receive: true;"></a-entity>
+ 
+ 
+          <!-- Valla -->
+        <a-entity
+          position="-13 2 0"
+          rotation="0 55 0"
+          scale="5 5 5"
+          gltf-model="#fence"
+          shadow="cast: true; receive: true;"></a-entity>
+      </a-entity>
+
+      <!-- Termina la creación del escenario -->
+    </a-scene>
+  </body>
+</html>
