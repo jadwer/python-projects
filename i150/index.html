@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>    
+</head>
+<body>
+    <a-scene>
+        <a-assets>
+
+            <a-asset id="sky" src="./assets/images/sky.jpg"></a-asset>
+
+            <a-asset id="table" src="./assets/models/TableModel.glb" ></a-asset>
+
+            <a-asset-item id="table-obj" src="./assets/models/TableCup/tinker.obj"></a-asset>
+            <a-asset-item id="table-mtl" src="./assets/models/TableCup/obj.mtl"></a-asset>
+
+            <a-asset-item id="lamp-obj" src="./assets/models/TableLamp/tinker.obj"></a-asset>
+            <a-asset-item id="lamp-mtl" src="./assets/models/TableLamp/obj.mtl"></a-asset>
+        
+        </a-assets>
+
+        <a-camera position="0 5 10"></a-camera>
+
+        <a-entity rotation="-90 0 -40">
+            <a-entity obj-model="obj: #table-obj; mtl: #table-mtl" position="0 0 0" rotation="0 0 0" scale="0.1 0.1 0.1"></a-entity>
+            <a-entity obj-model="obj: #lamp-obj; mtl: #lamp-mtl" position="5.5 3 3.5" rotation="0 0 45" scale="0.1 0.1 0.1"></a-entity>
+        </a-entity>
+
+
+        
+
+        <a-sky src="#sky"></a-sky>
+
+
+
+    </a-scene>
+    
+</body>
+</html>
