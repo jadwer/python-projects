@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics on Aframe</title>
+
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <!--script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.4.0/dist/aframe-extras.min.js"></script -->
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.min.js"></script>
+    <body>
+
+    <a-scene physics="debug:true; friction: 0.01; restitution: 0.3">
+        <a-entity position="0 1.6 15">
+            <a-camera></a-camera>
+        </a-entity>
+
+        <a-entity dynamic-body="shape:sphere; sphereRadius:2"  position="5 5 -5">
+            <a-torus color="green"></a-torus>
+        </a-entity>
+
+        <a-entity dynamic-body position="0 5 -5">
+            <a-sphere  color="orange"></a-sphere>
+        </a-entity>
+
+        <a-entity >
+            <a-box position="2.5 -5 -10" color="red" scale="20 1 20" body="type:static"></a-box>
+        </a-entity>
+    </a-scene>
+    
+</body>
+</html>
