@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi primer AR basico</title>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+</head>
+<body style="margin : 0px; overflow: hidden;">
+    <a-scene class="container" embedded 
+    arjs="sourceType: webcam; debugUIEnabled: false; trackingMetod: best;"
+    vr-mode-ui="enabled: false;">
+
+    <a-assets>
+        <a-asset-item id="tiger" src="./assets/tiger_run/scene.gltf"></a-asset-item>
+    </a-assets>
+
+    <a-marker preset="hiro">
+        <a-entity id="model" 
+            position="-0.5 0 0"
+            gltf-model="#tiger"
+            rotation="0 -90 90"
+            scale="2.5 2.5 2.5"
+            ></a-entity>
+    </a-marker>
+
+    </a-scene>
+    
+</body>
+</html>
