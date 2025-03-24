@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  padding: 0px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+button {
+    width:120px;
+  }
+  
+  #button-div {
+    display: none;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 10px;
+    width:100%;
+    z-index: 1;
+    border: 2px soild black;
+  }
+
+  .swal-icon img{
+    width: 120px;
+    height: 80px;
+  }
+  
+  
+  
