@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menú</title>
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+      <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+      <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+      <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <!-- SweetAlert -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <!-- StyleSheet local -->
+    <link href="./style.css" rel="stylesheet" />
+
+    <!-- Archivos JS -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+  
+  
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-analytics.js"></script>
+    
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyBXey2Owii97rJWceEEA56_EmUoaLmekLE",
+        authDomain: "tmp-menu-ar.firebaseapp.com",
+        projectId: "tmp-menu-ar",
+        storageBucket: "tmp-menu-ar.firebasestorage.app",
+        messagingSenderId: "261578710829",
+        appId: "1:261578710829:web:5190fa981d3e911b29bda4"
+      };
+    
+      firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    </script>
+    <script src="./js/markerHandler.js"></script>
+    <script src="./js/addButtons.js"></script>
+    <script src="./js/addMarker.js"></script>
+  </head>
+
+  <body>
+
+    <a-scene
+      id="main-scene"
+      vr-mode-ui="enabled: false"
+      embedded
+      arjs="sourceType:webcam; 
+    displayWidth: 1280; displayHeight: 960; 
+    debugUIEnabled: false;"
+      gesture-detector
+      create-markers
+      create-buttons
+      >
+      <!-- Cámara -->
+      <a-entity camera></a-entity>
+
+    </a-scene>
+
+    <!-- Botón div principal -->
+    <div id="button-div"></div>
+
+    <!-- Plantilla para el resumen del pedido -->
+    <div class="container">
+      <div id="modal-div" class="modal" tabindex="-1" rol="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Resumen del pedido</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"  onclick="closeModal()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+              <div class="table-responsive">
+                <table class="table-condensed">
+                  <thead>
+                    <tr>
+                      <th><strong>Artículo</strong></th>
+                      <th class="text-center">Precio</th>
+                      <th class="text-center">Cantidad</th>
+                      <th class="text-center">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody id="bill-table-body">
+                    <!-- foreach ($order->lineItems as $line) -->
+                    <!-- Aquí se llenará la tabla con los productos seleccionados -->
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button id="pay-button" type="button" class="btn btn-primary">
+                Pagar ahora
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+      function closeModal() {
+        document.getElementById("modal-div").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
